@@ -1,0 +1,23 @@
+[
+    {
+       "name": "Tether",
+       "category": "",
+       "price": "Bsc",
+       "market_cap": "$15.0 B",
+       "last_7d": "$15.0 B"
+    },
+    {
+        "name": "Binance USD",
+        "category": "",
+        "price": "Bsc",
+        "market_cap": "$15.0 B",
+        "last_7d": "$15.0 B"
+    },
+    {
+        "name": "USD Coin",
+        "category": "",
+        "price": "Bsc",
+        "market_cap": "$15.0 B",
+        "last_7d": "$15.0 B"
+    }
+]

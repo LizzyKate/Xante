@@ -1,0 +1,349 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Mulish' !important;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  color: #fff;
+  background-color: #151F38;
+  line-height: 20.08px;
+}
+
+.btn {
+  border-radius: 4px;
+  background: #281E5D;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0em;
+}
+
+table {
+  width: 100%;
+  background: #0A132B !important;
+}
+
+tr {
+  height: 96px;
+  /* padding: 38px 72px; */
+}
+
+tbody tr {
+  border-bottom: 1px solid #151F38;
+}
+
+td,
+th {
+  /* padding: 38px 30px; */
+  text-align: left;
+}
+
+
+p {
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 38px !important;
+  line-height: 50px;
+}
+
+h2 {
+  font-size: 32px !important;
+  line-height: 42px;
+}
+
+h3 {
+  font-size: 28px !important;
+  line-height: 42px;
+}
+
+h4 {
+  font-size: 22px !important;
+}
+
+h5 {
+  font-size: 24px !important;
+  line-height: 29.05px;
+}
+
+.mulish-h2 {
+  font-family: mulish;
+  font-weight: 600 !important;
+}
+
+.sharp-h2 {
+  font-family: Sharp Sans;
+  font-weight: 600 !important;
+}
+
+.inter-h2 {
+  font-family: Inter;
+  font-weight: 500 !important;
+}
+
+.ma-headers {
+  font-family: Inter;
+  font-weight: 500 !important;
+  line-height: 38.73px !important;
+}
+
+.inter {
+  font-family: Inter;
+}
+
+.mulish {
+  font-family: mulish;
+}
+
+.sharp-sans {
+  font-family: Sharp Sans;
+}
+
+.primary-white {
+  color: #fff;
+}
+
+.secondary-white {
+  color: #DCE0E9;
+}
+
+.faded {
+  color: #BFC3CE;
+}
+
+.arrow-btn {
+  width: 69px;
+  height: 53px;
+  background: #0A1227;
+  border-radius: 4px;
+  padding: 24px 29px;
+}
+
+.wrapper {
+  padding: 0 68px !important;
+}
+
+.show-btn {
+  background: #0a132b;
+  width: 100%;
+}
+
+
+/* ***********************TABLE STYLES****************** */
+.lockvalue-percent {
+  color: #A2F2CD;
+  font-size: 12px;
+}
+
+.lockvalue-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.platform-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* *****************COMPARE */
+
+.active-filter {
+  background-color: #056237;
+}
+
+
+
+
+
+
+.header-sect {
+  height: 757px;
+  background: #081B3D;
+  /* padding: 122px 0 123px 121px; */
+}
+
+.sect-2 {
+  height: 757px;
+  width: 100%;
+  background: #081B3D;
+  padding: 148px 0 303px 231px;
+}
+
+.sect-2-img {
+  height: 605px;
+  /* width: 910px; */
+  position: absolute;
+  left: 809px;
+  top: 684px;
+}
+
+
+.coin-category {
+  height: 30px;
+  width: auto;
+  background: #1F2B4A;
+  padding: 4px 8px 6px 8px;
+  border-radius: 2px;
+  text-align: center;
+}
+
+.coin_category-grid {
+  width: 240px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+
+
+
+
+
+
+/* *******************LOGIN AND SIGNUP STYLES****************** */
+
+#login-page {
+  background: #151F38;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  text-align: center;
+  /* padding: 80px 0 0 0; */
+}
+
+.login-box {
+  width: 500px;
+  height: 500px;
+  padding: 49px 61px 87px 61px;
+  margin-top: 63px;
+}
+
+.rect9 {
+  width: 378px;
+  height: 56px;
+  border-radius: 2px;
+  background: #fff;
+}
+
+
+
+
+/* ***************************MEDIA QUERY ************************ */
+
+
+@media screen and (max-width: 1024px) {
+
+  td,
+  th {
+    padding: 16px 14px !important;
+  }
+
+  .lockvalue-col {
+    flex-direction: row;
+    gap: 4px;
+  }
+
+  .wrapper {
+    padding: 0px 24px !important;
+  }
+
+}
+
+
+@media screen and (max-width: 768px) {
+  tr {
+    height: auto;
+  }
+
+  .coin_category-grid {
+    width: auto;
+  }
+
+  .wrapper {
+    padding: 0px 24px !important;
+  }
+
+}
+
+@media screen and (max-width: 540px) {
+  body {
+    font-size: 14px;
+  }
+
+  h2 {
+    font-size: 24px !important;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  h5 {
+    font-size: 14px !important;
+  }
+
+  .login-box {
+    width: 350px;
+    height: 600px;
+    padding: 30px 1px 50px 1px;
+  }
+
+  .rect9 {
+    width: 345px;
+  }
+
+  .coin_category-grid {
+    width: auto;
+  }
+
+  .coin-category {
+    font-size: 10px !important;
+    height: 23px;
+  }
+
+  .lockvalue-col {
+    flex-direction: row;
+    gap: 4px;
+  }
+
+  tr {
+    height: auto;
+    margin: 16px 0px;
+  }
+
+  td,
+  th {
+    padding: 0px !important;
+    margin-top: 16px;
+  }
+
+  .wrapper {
+    padding: 0px 24px !important;
+  }
+
+  .ma-headers {
+    font-size: 18px !important;
+  }
+
+  .small-text {
+    font-size: 7px;
+  }
+
+  .arrow-btn {
+    width: 57.86px;
+    height: 49.96px;
+    padding: 24px 21px;
+  }
+
+}
