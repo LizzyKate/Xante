@@ -18,6 +18,11 @@ body {
   line-height: 20.08px;
 }
 
+@font-face {
+  font-family: Sharp-sans;
+  src: url("../font/SharpSansBold.otf") format("opentype");
+}
+
 .btn {
   border-radius: 4px;
   background: #281E5D;
