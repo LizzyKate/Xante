@@ -443,7 +443,7 @@ a.nuxt-link-exact-active {
 }
 
 .search-box {
-  width: 377px;
+  width: 100%;
   height: 52px;
   background: #0a1227;
   border-radius: 4px;
