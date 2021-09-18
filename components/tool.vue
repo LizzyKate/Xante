@@ -3,18 +3,30 @@
     <h2 class="inter-h2 mb-8">APY Calculator</h2>
     <div class="apycalBox">
       <div class="md:flex hidden items-center gap-4 mb-20">
-        <div class="coin-frame active flex items-center gap-2">
-          <img src="../assets/images/eth.png" alt="" />
-          <p class="text-sm">ETH</p>
-        </div>
-        <div class="coin-frame flex items-center gap-2">
-          <img src="../assets/images/btc.png" alt="" />
-          <p class="text-sm">BTC</p>
-        </div>
-        <div class="coin-frame flex items-center gap-2">
-          <img src="../assets/images/kcs.png" alt="" />
-          <p class="text-sm">KCS</p>
-        </div>
+        <button
+          :class="value === 'ETH' ? 'active' : ''"
+          class="coin-frame flex items-center gap-2"
+          @click="select('ETH')"
+        >
+          <img src="/images/eth.png" alt="" />
+          <span class="text-sm">ETH</span>
+        </button>
+        <button
+          :class="value === 'BTC' ? 'active' : ''"
+          class="coin-frame flex items-center gap-2"
+          @click="select('BTC')"
+        >
+          <img src="/images/btc.png" alt="" />
+          <span class="text-sm">BTC</span>
+        </button>
+        <button
+          class="coin-frame flex items-center gap-2"
+          :class="value === 'KCS' ? 'active' : ''"
+          @click="select('KCS')"
+        >
+          <img src="/images/kcs.png" alt="" />
+          <span class="text-sm">KCS</span>
+        </button>
       </div>
 
       <div class="flex md:flex-row flex-col items-center">
@@ -23,12 +35,28 @@
             <label for="amount">Amount</label>
             <div class="apyInput flex items-center">
               <select
-                class="inter bg-transparent focus:outline-none mr-6"
-                name=""
                 id=""
+                v-model="currency"
+                class="
+                  inter
+                  bg-transparent
+                  focus:outline-none
+                  mr-6
+                  cursor-pointer
+                "
+                name=""
               >
-                <option class="inter" value="USD">USD</option>
+                <option selected value disabled>Currency</option>
+                <option
+                  v-for="(name, i) in money"
+                  :key="i"
+                  :value="name.id"
+                  class="INTER"
+                >
+                  {{ name.currency }}
+                </option>
               </select>
+
               <input
                 class="bg-transparent focus:outline-none"
                 type="text"
@@ -39,15 +67,36 @@
             <label class="mt-5" for="duration">Duration</label>
             <div class="apyInput">
               <select
-                class="inter bg-transparent focus:outline-none mr-6"
-                name=""
                 id=""
+                v-model="day"
+                class="
+                  inter
+                  bg-transparent
+                  focus:outline-none
+                  mr-6
+                  cursor-pointer
+                "
+                name=""
               >
-                <option class="inter" value="day">Day</option>
+                <option selected value disabled>Day</option>
+                <option
+                  v-for="(no, b) in days"
+                  :key="b"
+                  :value="no.id"
+                  class="INTER"
+                >
+                  {{ no.number }}
+                </option>
               </select>
+              <input
+                v-model="day"
+                class="bg-transparent focus:outline-none"
+                type="text"
+                placeholder=""
+              />
             </div>
 
-            <div class="apyInput mt-10">
+            <!-- <div class="apyInput mt-10">
               <select
                 class="inter bg-transparent focus:outline-none mr-6"
                 name=""
@@ -55,8 +104,9 @@
               >
                 <option class="inter" value="day">Day</option>
               </select>
-            </div>
+            </div> -->
           </div>
+          <button id="calculate" class="mt-3">Calculate</button>
         </form>
 
         <div class="vert-rect mx-20 md:block hidden"></div>
@@ -94,10 +144,65 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      currency: '',
+      money: [
+        {
+          currency: 'USD ',
+          id: 'USD ',
+        },
+        {
+          currency: 'Naira ',
+          id: 'Naira',
+        },
+        {
+          currency: 'Kobo ',
+          id: 'Kobo',
+        },
+      ],
+      day: '',
+      days: [
+        {
+          number: 1,
+          id: 1,
+        },
+        {
+          number: 2,
+          id: 2,
+        },
+        {
+          number: 3,
+          id: 3,
+        },
+        {
+          number: 4,
+          id: 4,
+        },
+      ],
+
+      value: 'ETH',
+    }
+  },
+  mounted() {},
+  methods: {
+    select(coin) {
+      console.log(coin)
+      this.value = coin
+    },
+  },
+}
 </script>
 
 <style>
+#calculate {
+  width: 100%;
+
+  background: #056237;
+  border-radius: 4px;
+  padding: 8px 16px;
+}
 #tools-view {
   /* width: 100%; */
   background: #151f38;
@@ -128,7 +233,7 @@ export default {};
   width: 317px;
   border-radius: 4px;
   background: #1f2b4a;
-  padding: 12.5px 20px;
+  padding: 12.5px 10px;
 }
 
 .vert-rect {
