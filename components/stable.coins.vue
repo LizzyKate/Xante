@@ -16,6 +16,54 @@
         justify-between
       "
     >
+      <div class="flex items-end space-x-2 relative">
+        <button
+          v-for="(select, g) in allStableCoins"
+          :key="g"
+          class="py-4 px-3"
+          :class="stableCoin === select ? 'active-tab' : ' '"
+          @click="chooseCoin(select)"
+        >
+          {{ select }}
+        </button>
+
+        <button class="arrow-btn" @click="showCoin()">
+          <img src="/images/down.png" alt="" />
+        </button>
+        <span class="text-xs lg:block hidden">More coins</span>
+        <div
+          v-if="visible"
+          class="coin flex flex-col"
+          :class="visible ? 'fade-in' : 'fade-out'"
+        >
+          <p
+            v-for="(list, e) in coins"
+            :key="Math.random() * e"
+            @click="selectCoin(list)"
+          >
+            {{ list }}
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-center lg:mt-0 mt-4">
+        <span class="lg:text-sm small-text font-light mr-3">USDT</span>
+        <h5 class="inter lg:text-2xl text-sm">$1.00</h5>
+      </div>
+    </div>
+    <!-- <div
+      class="
+        wrapper
+        w-full
+        mb-6
+        flex
+        lg:flex-row
+        flex-col
+        lg:items-end
+        items-start
+        justify-between
+      "
+    >
       <div class="flex items-end gap-2">
         <tab class="active-tab">USDT</tab>
         <tab>USDC</tab>
@@ -30,7 +78,7 @@
         <span class="lg:text-sm small-text font-light mr-3">USDT</span>
         <h5 class="inter lg:text-2xl text-sm">$1.00</h5>
       </div>
-    </div>
+    </div> -->
 
     <div class="wrapper">
       <div>
@@ -61,7 +109,7 @@
     <!-- *********************MOBILE****************** -->
 
     <div class="mt-11 lg:hidden block mb-20">
-      <div class="mobile-sc-table" v-for="(coin, b) in stableCoins" :key="b">
+      <div v-for="(coin, b) in stableCoins" :key="b" class="mobile-sc-table">
         <div class="flex items-center gap-3 mb-5">
           <img :src="`/images/${coin.img}`" alt="" class="w-10 h-10" />
           {{ coin.name }}
@@ -87,7 +135,7 @@
 </template>
 
 <script>
-import stableCoinsGraphVue from "~/components/stableCoins.graph.vue";
+import stableCoinsGraphVue from '~/components/stableCoins.graph.vue'
 
 export default {
   components: {
@@ -95,15 +143,36 @@ export default {
   },
 
   data() {
-    return {};
+    return {
+      allStableCoins: ['USDL', 'USDT', 'USDF'],
+      stableCoin: '',
+      visible: false,
+      coins: ['USDF', 'USDC', 'BUSD'],
+    }
   },
 
   computed: {
     stableCoins() {
-      return this.$store.state.stable_coins.stableCoins;
+      return this.$store.state.stable_coins.stableCoins
     },
   },
-};
+  mounted() {
+    this.stableCoin = this.allStableCoins[0]
+  },
+  methods: {
+    chooseCoin(option) {
+      this.stableCoin = option
+    },
+    showCoin() {
+      this.visible = !this.visible
+    },
+    selectCoin(value) {
+      if (!this.allStableCoins.includes(value)) {
+        this.allStableCoins.push(value)
+      }
+    },
+  },
+}
 </script>
 
 <style scoped>
@@ -120,5 +189,26 @@ td {
   background: #0a132a;
   margin-top: 4px;
   padding: 16px 24px 29px 24px;
+}
+.coin {
+  background: #1f2b4a;
+  min-width: 134px;
+  border-radius: 3px;
+  position: absolute;
+  z-index: 50;
+  top: 63px;
+  right: 0px;
+}
+.coin p {
+  padding: 12px 16px;
+}
+.coin p:hover {
+  background: #056237;
+}
+@media screen and (max-width: 540px) {
+  .s-btn-holder,
+  .sc-graph {
+    padding: 0px !important;
+  }
 }
 </style>

@@ -16,11 +16,11 @@
     >
       <div class="flex items-end space-x-2 relative">
         <button
-          @click="chooseCoin(select)"
-          class="py-4 px-3"
-          :class="[stableCoin === select ? 'active-tab' : ' ']"
           v-for="(select, g) in allStableCoins"
           :key="g"
+          class="py-4 px-3"
+          :class="stableCoin === select ? 'active-tab' : ' '"
+          @click="chooseCoin(select)"
         >
           {{ select }}
         </button>
@@ -30,8 +30,8 @@
         </button>
         <span class="text-xs lg:block hidden">More coins</span>
         <div
-          class="coin flex flex-col"
           v-if="visible"
+          class="coin flex flex-col"
           :class="visible ? 'fade-in' : 'fade-out'"
         >
           <p
@@ -65,9 +65,9 @@
 
         <tbody>
           <tr
-            class="stable-cointable"
             v-for="(coin, i) in stableCoins"
             :key="i"
+            class="stable-cointable"
           >
             <td class="flex items-center gap-3">
               <img :src="`/images/${coin.img}`" alt="" />
@@ -90,51 +90,42 @@
 </template>
 
 <script>
-import stableCoinsGraphVue from "../stableCoins.graph.vue";
-import Tab from "../Tab.vue";
+import stableCoinsGraphVue from '../stableCoins.graph.vue'
 
 export default {
-  name: "StableCoinTable",
-  components: { Tab, stableCoinsGraphVue },
+  name: 'StableCoinTable',
+  components: { stableCoinsGraphVue },
   data() {
     return {
-      allStableCoins: [],
-      stableCoin: "USDT",
+      allStableCoins: ['USDL', 'USDT', 'USDF'],
+      stableCoin: '',
       visible: false,
-      coins: ["USDF", "USDC", "BUSD"],
-    };
+      coins: ['USDF', 'USDC', 'BUSD'],
+    }
   },
 
   computed: {
     stableCoins() {
-      return this.$store.state.stable_coins.stableCoins.slice(0, 3);
-    },
-  },
-  methods: {
-    chooseCoin(option) {
-      this.stableCoin = option;
-    },
-    showCoin() {
-      this.visible = !this.visible;
-    },
-    selectCoin(value) {
-      if (!this.allStableCoins.includes(value)) {
-        this.allStableCoins.push(value);
-      }
-
-      // const removeDuplicate = (data) => {
-      //   return data.filter((e, index) => {
-      //     data.indexOf(e) === index;
-      //   });
-      // };
-      // console.log(removeDuplicate(this.allStableCoins));
-      // this.allStableCoins = removeDuplicate(this.allStableCoins);
+      return this.$store.state.stable_coins.stableCoins.slice(0, 3)
     },
   },
   mounted() {
-    this.stableCoin = this.allStableCoins[0];
+    this.stableCoin = this.allStableCoins[0]
   },
-};
+  methods: {
+    chooseCoin(option) {
+      this.stableCoin = option
+    },
+    showCoin() {
+      this.visible = !this.visible
+    },
+    selectCoin(value) {
+      if (!this.allStableCoins.includes(value)) {
+        this.allStableCoins.push(value)
+      }
+    },
+  },
+}
 </script>
 
 <style scoped>

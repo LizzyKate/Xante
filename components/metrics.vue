@@ -13,7 +13,7 @@
             style="width: 90px"
             @change="add(coin)"
           >
-            <option selected value>Coin</option>
+            <option selected value disabled>Coin</option>
             <option
               v-for="(name, i) in compareCoin"
               :key="i"
@@ -28,7 +28,7 @@
           </div>
         </div>
         <div
-          class="w-full all-coin p-2"
+          class="w-full all-coin p-2 space-x-3"
           style=""
           :class="allCoin.length === 0 ? 'hidden' : ' flex'"
         >
@@ -140,7 +140,9 @@ export default {
       this.allCoin.splice(i, 1)
     },
     add() {
-      this.allCoin.push(this.coin)
+      if (!this.allCoin.includes(this.coin)) {
+        this.allCoin.push(this.coin)
+      }
     },
   },
 }

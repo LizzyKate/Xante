@@ -5,22 +5,23 @@
 </template>
 
 <script>
-import Chart from "chart.js";
-import coinsData from "../public/stable.coins";
+import Chart from 'chart.js'
+import coinsData from '../public/stable.coins'
 
 export default {
   data() {
     return {
-      coinsData: coinsData,
-    };
+      coinsData,
+    }
   },
   mounted() {
-    const ctx = document.getElementById("coins");
-    ctx.style.backgroundColor = "#0A1227";
-    ctx.style.borderRadius = "4px";
-    new Chart(ctx, this.coinsData);
+    const ctx = document.getElementById('coins')
+    ctx.style.backgroundColor = '#0A1227'
+    ctx.style.borderRadius = '4px'
+    // eslint-disable-next-line no-new
+    new Chart(ctx, this.coinsData)
   },
-};
+}
 </script>
 
 <style>
