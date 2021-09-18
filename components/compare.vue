@@ -10,19 +10,68 @@
       </p>
 
       <div class="lg:flex block items-center justify-between">
-        <div class="compare-filters grid-cols-3 mt-10 mb-16">
-          <p class="compare-filter-option active-filter md:col-span-3">
-            All Markets
-          </p>
-          <p class="compare-filter-option">Centralized</p>
-          <p class="compare-filter-option md:col-span-2">Decentralized</p>
-          <p class="compare-filter-option">Stable coins</p>
-          <select class="compare-filter-option" name="categories" id="">
-            <option value="0">Categories</option>
-          </select>
-          <select class="compare-filter-option" name="titleList" id="">
+        <div class="mt-10 mb-16">
+          <div class="mb-3">
+            <button class="compare-filter-option active-filter md:col-span-3">
+              All Markets
+            </button>
+          </div>
+          <div class="flex items-center space-x-3 mb-3">
+            <div>
+              <button class="compare-filter-option">Centralized</button>
+            </div>
+            <div>
+              <button class="compare-filter-option">Decentralized</button>
+            </div>
+          </div>
+          <div class="flex items-center space-x-2">
+            <div class="">
+              <button class="compare-filter-option">Stable coins</button>
+            </div>
+            <!-- <select
+              id=""
+              v-model="category"
+              class="compare-filter-option focus:outline-none"
+            >
+              <option selected value>Categories</option>
+              <option
+                v-for="(name, l) in chooseCategory"
+                :key="l"
+                :value="name.id"
+              >
+                {{ name.code }}
+              </option>
+            </select> -->
+            <div class="relative _category">
+              <div class="flex justify-between items-center" @click="toggle()">
+                <span>{{ value }}</span>
+                <img
+                  src="/images/arrowdown.png"
+                  style="width: 7%"
+                  alt="drop down"
+                />
+              </div>
+
+              <div
+                :class="visible ? 'fade-in' : 'hidden'"
+                class="dropdown-content"
+              >
+                <ul>
+                  <li
+                    v-for="(item, f) in list"
+                    :key="f"
+                    class=""
+                    @click="select(item)"
+                  >
+                    {{ item }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- <select id="" class="compare-filter-option" name="titleList">
             <option value="0">Title list</option>
-          </select>
+          </select> -->
         </div>
 
         <div class="linknsearch-grid">
@@ -43,20 +92,45 @@
             </button>
           </div>
 
-          <form class="search-box md:mr-0 mr-4">
-            <div class="flex items-center">
+          <form
+            class="search-box md:mr-0 mr-4 relative cursor-pointer"
+            @click="showCoin()"
+          >
+            <div class="flex items-center w-full">
               <img
                 class="md:mr-3 mr-2 w-3 h-3"
-                src="assets/images/search.png"
+                src="/images/search.png"
                 alt=""
               />
               <input
+                v-model="result"
                 type="text"
-                class="bg-transparent focus:outline-none md:text-sm text-xs"
+                class="
+                  bg-transparent
+                  focus:outline-none
+                  md:text-sm
+                  text-xs
+                  w-full
+                "
                 placeholder="Search Coin"
               />
             </div>
-            <img src="assets/images/shape.png" alt="" />
+            <img src="/images/shape.png" alt="" />
+            <div
+              :class="coin ? 'fade-in' : 'hidden'"
+              class="dropdown-content-two"
+            >
+              <ul>
+                <li
+                  v-for="(item, h) in allCoin"
+                  :key="h"
+                  class=""
+                  @click="showResult(item)"
+                >
+                  {{ item }}
+                </li>
+              </ul>
+            </div>
           </form>
         </div>
       </div>
@@ -68,9 +142,9 @@
           <th>Category</th>
           <th>Locked value</th>
           <th
-            class="text-center"
             v-for="(coin, i) in allCentralisedCoins"
             :key="i"
+            class="text-center"
           >
             <div class="flex flex-col items-center">
               <div class="mb-7 flex flex-col items-center">
@@ -83,7 +157,7 @@
         </tr>
 
         <tbody>
-          <tr class="" v-for="(coin, i) in allCoins" :key="i">
+          <tr v-for="(coin, a) in allCoins" :key="a" class="">
             <td class="platform-col">
               <img :src="`/images/${coin.img}`" alt="" />
               {{ coin.platform }}
@@ -91,9 +165,9 @@
             <td>
               <div class="coin_category-grid">
                 <div
-                  class="coin-category"
                   v-for="(category, j) in coin.category"
                   :key="j"
+                  class="coin-category"
                 >
                   {{ category }}
                 </div>
@@ -104,15 +178,15 @@
               <div class="lockvalue-percent">{{ coin.lockedValuePercent }}</div>
             </td>
             <td
-              class="text-center"
               v-for="(allCoin, k) in coin.allCoins"
               :key="k"
+              class="text-center"
             >
               {{ allCoin.APY }}
             </td>
 
             <td>
-              <a href="#" id="l-green-btn">Go to site</a>
+              <a id="l-green-btn" href="#">Go to site</a>
             </td>
           </tr>
         </tbody>
@@ -189,42 +263,116 @@
 </template>
 
 <script>
-import LGreenBtn from "~/components/Buttons/LGreenBtn.vue";
+// import LGreenBtn from '~/components/Buttons/LGreenBtn.vue'
 export default {
-  components: { LGreenBtn },
+  // components: { LGreenBtn },
 
   data() {
     return {
       lending: true,
       borrowing: false,
-    };
+      category: '',
+      result: '',
+      chooseCategory: [
+        {
+          code: 'DEX',
+          id: 'Dex',
+        },
+        {
+          code: 'HEX',
+          id: 'Hex',
+        },
+        {
+          code: 'DEX',
+          id: 'Dex',
+        },
+        {
+          code: 'HEX',
+          id: 'Hex',
+        },
+      ],
+      coin: false,
+      allCoin: ['BTC', 'ETH', 'KCS'],
+
+      value: 'Category',
+      list: ['DEX', 'HEX', 'DEC'],
+      visible: false,
+    }
   },
   computed: {
     allCentralisedCoins() {
-      return this.$store.state.market.allCentralisedCoins;
+      return this.$store.state.market.allCentralisedCoins
     },
     allDecentralisedCoins() {
-      return this.$store.state.market.allDecentralisedCoins;
+      return this.$store.state.market.allDecentralisedCoins
     },
     allCoins() {
-      return this.$store.state.market.coins;
+      return this.$store.state.market.coins
     },
   },
 
   methods: {
     toggleLend() {
-      this.lending = true;
-      this.borrowing = false;
+      this.lending = true
+      this.borrowing = false
     },
     toggleBorrow() {
-      this.lending = false;
-      this.borrowing = true;
+      this.lending = false
+      this.borrowing = true
+    },
+    toggle() {
+      this.visible = !this.visible
+    },
+    select(option) {
+      this.value = option
+      if (this.value === option) {
+        this.visible = !this.visible
+      }
+    },
+    showCoin() {
+      this.coin = !this.coin
+    },
+    showResult(i) {
+      this.result = i
     },
   },
-};
+}
 </script>
 
 <style scoped>
+.dropdown-content {
+  position: absolute;
+  width: 100%;
+  background: #1f2b4a;
+  z-index: 1;
+  top: 29px;
+  left: 0px;
+  border-radius: 3px;
+}
+.dropdown-content-two {
+  position: absolute;
+  width: 100%;
+  background: #1f2b4a;
+  z-index: 1;
+  top: 54px;
+  left: 0px;
+  border-radius: 3px;
+}
+.dropdown-content ul li,
+.dropdown-content-two ul li {
+  float: none;
+  color: white;
+  font-family: 'Mulish';
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content ul li:hover,
+.dropdown-content-two ul li:hover {
+  background: #056237;
+}
 #l-green-btn {
   padding: 8px 16px;
   /* width: 112.1px; */
@@ -276,7 +424,13 @@ th {
   max-width: 118px;
   cursor: pointer;
 }
-
+._category {
+  background: #1f2b4a;
+  border-radius: 2px;
+  padding: 4px 8px;
+  min-width: 118px;
+  cursor: pointer;
+}
 .cls {
   background: #0a1227;
   border-radius: 24px;

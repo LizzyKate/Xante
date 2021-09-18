@@ -27,7 +27,7 @@
 
 <script>
 export default {
-  name: "Nav",
+  name: 'Nav',
   // mounted() {
   //   if (this.$route.path === "/Centralised") {
   //     this.$refs.comparison.style.borderBottom = "4px solid #39B87D";
@@ -38,11 +38,11 @@ export default {
   //   }
   //   console.log(this.$route.path, "hhhh");
   // },
-};
+}
 </script>
 
-<style>
-.dropdown {
+<style >
+/* .dropdown {
   float: left;
   overflow: hidden;
 }
@@ -65,7 +65,7 @@ export default {
 .dropdown-content a {
   float: none;
   color: white;
-  font-family: "Mulish";
+  font-family: 'Mulish';
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -78,11 +78,11 @@ export default {
 
 .dropdown:hover .dropdown-content {
   display: block;
-}
+} */
 .nav-link {
   color: #dce0e9;
   /* margin-right: 40px;  */
-  font-family: "Mulish";
+  font-family: 'Mulish';
   font-size: 16px;
   font-weight: 300;
   padding: 30px 0;

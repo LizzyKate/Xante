@@ -12,10 +12,10 @@
       >
         <ul>
           <li
-            class="e-dv"
             v-for="(item, f) in list"
-            @click="select(item)"
             :key="f"
+            class="e-dv"
+            @click="select(item)"
           >
             {{ item }}
           </li>
@@ -27,39 +27,38 @@
 
 <script>
 export default {
-  name: "ProviderDropdown",
+  name: 'ProviderDropdown',
   data() {
     return {
-      choose: "Top 10 Providers",
       openPDropdown: false,
       option: [
-        "Top 10 Borrow Rates",
-        "Top 10 Provider",
-        "Compare Provider",
-        "Coin Price",
+        'Top 10 Borrow Rates',
+        'Top 10 Provider',
+        'Compare Provider',
+        'Coin Price',
       ],
-      value: "Top 10 Providers",
+      value: 'Top 10 Providers',
       list: [
-        "Top 10 Borrow Rates",
-        "Top 10 Provider",
-        "Compare Provider",
-        "Coin Price",
+        'Top 10 Borrow Rates',
+        'Top 10 Provider',
+        'Compare Provider',
+        'Coin Price',
       ],
       visible: false,
-    };
+    }
   },
   methods: {
     toggle() {
-      this.visible = !this.visible;
+      this.visible = !this.visible
     },
     select(option) {
-      this.value = option;
+      this.value = option
     },
     show() {
-      this.openPDropdown = !this.openPDropdown;
+      this.openPDropdown = !this.openPDropdown
     },
   },
-};
+}
 </script>
 
 <style sccoped>

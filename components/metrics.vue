@@ -6,11 +6,11 @@
       <div class="flex space-x-4 items-center mt-4">
         <div class="relative">
           <select
+            id="coin"
+            v-model="coin"
             name="coin"
             class="py-4 px-3 active-tab focus:outline-none"
-            id="coin"
             style="width: 90px"
-            v-model="coin"
             @change="add(coin)"
           >
             <option selected value>Coin</option>
@@ -33,9 +33,9 @@
           :class="allCoin.length === 0 ? 'hidden' : ' flex'"
         >
           <div
-            class="flex justify-between items-center p-2"
             v-for="(currency, k) in allCoin"
             :key="k"
+            class="flex justify-between items-center p-2"
             style="min-width: 113px; background: #151f38; border-radius: 3px"
           >
             <div>
@@ -110,40 +110,40 @@ export default {
   components: {},
   data() {
     return {
-      coin: "",
+      coin: '',
       compareCoin: [
         {
-          crypto: "BTC ",
-          id: "BTC ",
-          fullName: "Bitcoin",
+          crypto: 'BTC ',
+          id: 'BTC ',
+          fullName: 'Bitcoin',
         },
         {
-          crypto: "ETH",
-          id: "ETH",
-          fullName: "Ethereum",
+          crypto: 'ETH',
+          id: 'ETH',
+          fullName: 'Ethereum',
         },
       ],
       allCoin: [],
-    };
+    }
   },
 
   computed: {
     coinOne() {
-      return this.$store.state.metrics.coinOne;
+      return this.$store.state.metrics.coinOne
     },
     coinTwo() {
-      return this.$store.state.metrics.coinTwo;
+      return this.$store.state.metrics.coinTwo
     },
   },
   methods: {
     removeCoin(i) {
-      this.allCoin.splice(i, 1);
+      this.allCoin.splice(i, 1)
     },
     add() {
-      this.allCoin.push(this.coin);
+      this.allCoin.push(this.coin)
     },
   },
-};
+}
 </script>
 
 <style scoped>

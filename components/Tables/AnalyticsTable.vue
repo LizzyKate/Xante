@@ -12,15 +12,15 @@
         >
           <button
             class="py-3 px-5 m-1"
-            @click="toggleFirst()"
             :class="firstConditional ? 'toggle' : ''"
+            @click="toggleFirst()"
           >
             Locked values
           </button>
           <button
             class="py-3 px-5"
-            @click="toggleSecond()"
             :class="secondConditional ? 'toggle' : ''"
+            @click="toggleSecond()"
           >
             Stable coin analysis
           </button>
@@ -31,11 +31,11 @@
 
       <div class="lg:flex hidden space-x-4 items-center gap-2">
         <button
-          @click="chooseCategory(select)"
-          class="py-4 px-6"
-          :class="[categoryValue === select ? 'active-tab' : ' ']"
           v-for="(select, j) in category"
           :key="j"
+          class="py-4 px-6"
+          :class="[categoryValue === select ? 'active-tab' : ' ']"
+          @click="chooseCategory(select)"
         >
           {{ select }}
         </button>
@@ -88,7 +88,7 @@
         </tr>
 
         <tbody>
-          <tr class="" v-for="(analytics, i) in marketAnalytics" :key="i">
+          <tr v-for="(analytics, i) in marketAnalytics" :key="i" class="">
             <td class="flex items-center gap-4">
               <img :src="`/images/${analytics.img}`" alt="" />
               {{ analytics.name }}
@@ -97,9 +97,9 @@
             <td>
               <div class="coin_category-grid">
                 <div
-                  class="coin-category"
                   v-for="(category, j) in analytics.category"
                   :key="j"
+                  class="coin-category"
                 >
                   {{ category }}
                 </div>
@@ -118,9 +118,9 @@
 
     <div class="mt-11 lg:hidden block">
       <div
-        class="mobile-ma-table"
         v-for="(analytics, b) in marketAnalytics"
         :key="b"
+        class="mobile-ma-table"
       >
         <div class="flex items-center gap-3 mb-5">
           <img :src="`/images/${analytics.img}`" alt="" class="w-10 h-10" />
@@ -152,12 +152,12 @@
 </template>
 
 <script>
-import lockedAnalyticsGraphVue from "../analytics.graph.vue";
+import lockedAnalyticsGraphVue from '../analytics.graph.vue'
 
-import ProviderDropdownVue from "../ProviderDropdown.vue";
+import ProviderDropdownVue from '../ProviderDropdown.vue'
 
 export default {
-  name: "AnalyticsTable",
+  name: 'AnalyticsTable',
   components: {
     ProviderDropdownVue,
     lockedAnalyticsGraphVue,
@@ -166,37 +166,37 @@ export default {
     return {
       firstConditional: true,
       secondConditional: false,
-      category: ["ALL", "DEFI", "NFT", "HECO"],
-      categoryValue: "All",
-    };
+      category: ['ALL', 'DEFI', 'NFT', 'HECO'],
+      categoryValue: 'All',
+    }
   },
 
   computed: {
     marketAnalytics() {
-      return this.$store.state.analytics.marketAnalytics.slice(0, 3);
-    },
-  },
-  methods: {
-    toggleFirst() {
-      this.firstConditional = true;
-      if (this.firstConditional === true) {
-        this.secondConditional = false;
-      }
-    },
-    toggleSecond() {
-      this.secondConditional = true;
-      if (this.secondConditional === true) {
-        this.firstConditional = false;
-      }
-    },
-    chooseCategory(option) {
-      this.categoryValue = option;
+      return this.$store.state.analytics.marketAnalytics.slice(0, 3)
     },
   },
   mounted() {
-    this.categoryValue = this.category[0];
+    this.categoryValue = this.category[0]
   },
-};
+  methods: {
+    toggleFirst() {
+      this.firstConditional = true
+      if (this.firstConditional === true) {
+        this.secondConditional = false
+      }
+    },
+    toggleSecond() {
+      this.secondConditional = true
+      if (this.secondConditional === true) {
+        this.firstConditional = false
+      }
+    },
+    chooseCategory(option) {
+      this.categoryValue = option
+    },
+  },
+}
 </script>
 
 <style scoped>
