@@ -285,6 +285,11 @@ h5 {
     padding: 0px 24px !important;
   }
 
+  h1 {
+    font-size: 23px !important;
+    line-height: 43px !important;
+  }
+
 }
 
 @media screen and (max-width: 540px) {
