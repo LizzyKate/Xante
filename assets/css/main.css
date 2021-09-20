@@ -23,6 +23,10 @@ body {
   src: url("../font/SharpSansBold.otf") format("opentype");
 }
 
+.sans {
+  font-family: 'Sharp-sans';
+}
+
 .btn {
   border-radius: 4px;
   background: #281E5D;
