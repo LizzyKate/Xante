@@ -27,6 +27,10 @@ body {
   font-family: 'Sharp-sans';
 }
 
+button {
+  font-family: 'Mulish';
+}
+
 .btn {
   border-radius: 4px;
   background: #281E5D;

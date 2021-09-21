@@ -142,14 +142,18 @@
           <th>Category</th>
           <th>Locked value</th>
           <th
-            v-for="(coin, i) in allCentralisedCoins"
+            v-for="(coinType, i) in allCentralisedCoins"
             :key="i"
             class="text-center"
           >
             <div class="flex flex-col items-center">
               <div class="mb-7 flex flex-col items-center">
-                <img :src="`/images/${coin.img}`" class="w-1/2 mb-4" alt="" />
-                <span class="text-sm">ETH</span>
+                <img
+                  :src="`/images/${coinType.img}`"
+                  class="w-1/2 mb-4"
+                  alt=""
+                />
+                <span class="text-sm">{{ coinType.coin }}</span>
               </div>
               <span>APY</span>
             </div>
@@ -157,36 +161,40 @@
         </tr>
 
         <tbody>
-          <tr v-for="(coin, a) in allCoins" :key="a" class="">
+          <tr v-for="(marketCoin, a) in allCoins" :key="a" class="">
             <td class="platform-col">
-              <img :src="`/images/${coin.img}`" alt="" />
-              {{ coin.platform }}
+              <img :src="`/images/${marketCoin.img}`" alt="" />
+              {{ marketCoin.platform }}
             </td>
             <td>
               <div class="coin_category-grid">
                 <div
-                  v-for="(category, j) in coin.category"
+                  v-for="(marketCategory, j) in marketCoin.category"
                   :key="j"
                   class="coin-category"
                 >
-                  {{ category }}
+                  {{ marketCategory }}
                 </div>
               </div>
             </td>
             <td class="lockvalue-col">
-              <div>{{ coin.lockedValue }}</div>
-              <div class="lockvalue-percent">{{ coin.lockedValuePercent }}</div>
+              <div>{{ marketCoin.lockedValue }}</div>
+              <div class="lockvalue-percent">
+                {{ marketCoin.lockedValuePercent }}
+              </div>
             </td>
             <td
-              v-for="(allCoin, k) in coin.allCoins"
+              v-for="(marketAllCoin, k) in marketCoin.allCoins"
               :key="k"
               class="text-center"
             >
-              {{ allCoin.APY }}
+              {{ marketAllCoin.APY }}
             </td>
-
-            <td>
-              <a id="l-green-btn" href="#">Go to site</a>
+            <td class="lg:hidden xl:block">
+              <a id="mobile-green-btn" href="#">Go to site</a>
+            </td>
+            <td class="lg:block xl:hidden">
+              <a id="mobile-green-btn" href="#">Go </a>
             </td>
           </tr>
         </tbody>
@@ -194,79 +202,90 @@
 
       <!-- *****MOBILE VIEW -->
 
-      <!-- <div
-        class="mobile-table lg:hidden block"
-        v-for="(coin, j) in coins"
+      <div
+        v-for="(mobileCoin, j) in allCoins"
         :key="j"
+        class="mobile-table lg:hidden block"
       >
-        <div class="flex items-start justify-between">
-          <div class="flex items-start mb-6">
-            <img :src="coin.img" alt="" class="mr-2" />
+        <div class="flex space-x-4 items-start mb-6">
+          <div class="w-10">
+            <img
+              :src="`/images/${mobileCoin.img}`"
+              alt=""
+              class="w-full mr-2"
+            />
+          </div>
 
-            <div class="">
-              <div class="lg:mr-5 mr-3">
-                <span>{{ coin.platform }}</span>
-                <div class="lockvalue-col">
-                  {{ coin.locked_value
-                  }}<span class="lockvalue-percent">+14.81%</span>
-                </div>
-                <div class="coin_category-grid">
-                  <span
-                    class="coin-category"
-                    v-for="(category, i) in coin.categories"
-                    :key="i"
-                  >
-                    {{ category }}
-                  </span>
-                </div>
+          <div class="">
+            <div class="lg:mr-5 mr-3">
+              <span>{{ mobileCoin.platform }}</span>
+              <div class="lockvalue-col">
+                {{ mobileCoin.locked_value
+                }}<span class="lockvalue-percent">+14.81%</span>
+              </div>
+              <div class="coin_category-grid">
+                <span
+                  v-for="(mobileCategory, i) in mobileCoin.category"
+                  :key="i"
+                  class="coin-category"
+                >
+                  {{ mobileCategory }}
+                </span>
               </div>
             </div>
           </div>
-
-          <LGreenBtn />
         </div>
+        <div class="flex items-center space-x-4 my-4">
+          <div>
+            <nuxt-link to="" id="mobile-green-btn" href="#"
+              >View Details</nuxt-link
+            >
+          </div>
+          <div>
+            <a id="mobile-green-btn" href="#">Go to site</a>
+          </div>
+        </div>
+        <!-- <div class="mobile-d-table"> -->
+        <!-- <div class="flex space-x-4 items-center">
+            <div
+              v-for="(coinType, m) in mobileCoin.allCoins"
+              id="coinType"
+              :key="m"
+            >
+              <img :src="`/images/${coinType.img}`" alt="" />
+              <span class="text-sm">{{ coinType.name }}</span>
+            </div>
+          </div>
+          <div class="flex space-x-4 items-center">
+            <p>Lend APY</p>
+            <p v-for="(apy, o) in mobileCoin.allCoins" :key="o">
+              {{ apy.lendApy }}
+            </p>
+          </div> -->
+        <!-- <tr class="">
+            <th>Lend APY</th>
 
-        <table class="mobile-d-table">
-          <tr>
-            <th></th>
-            <th>
-              <img src="~/assets/images/eth.png" alt="" />
-              <span class="text-sm">ETH</span>
-            </th>
-            <th>
-              <img src="~/assets/images/btc.png" alt="" />
-              <span class="text-sm">BCH</span>
-            </th>
-            <th>
-              <img src="~/assets/images/kcs.png" alt="" />
-              <span class="text-sm">KCS</span>
-            </th>
-          </tr>
-
-          <tr class="mb-4">
-            <td>Lend APY</td>
-            <td>{{ coin.ETH_APY }}</td>
+            <td v-for="(apy, o) in mobileCoin.allCoins" :key="o">
+              {{ apy.lendApy }}
+            </td>
             <td>{{ coin.BCH_APY }}</td>
             <td>{{ coin.KCS_APY }}</td>
           </tr>
 
           <tr class="mb-4">
-            <td>Borrow APY</td>
+            <th>Borrow APY</th>
             <td>{{ coin.ETH_APY }}</td>
             <td>{{ coin.BCH_APY }}</td>
             <td>{{ coin.KCS_APY }}</td>
-          </tr>
-        </table>
-      </div> -->
+          </tr> -->
+        <!-- </div> -->
+      </div>
     </div>
   </section>
 </template>
 
 <script>
-// import LGreenBtn from '~/components/Buttons/LGreenBtn.vue'
 export default {
-  // components: { LGreenBtn },
-
   data() {
     return {
       lending: true,
@@ -373,7 +392,7 @@ export default {
 .dropdown-content-two ul li:hover {
   background: #056237;
 }
-#l-green-btn {
+#mobile-green-btn {
   padding: 8px 16px;
   /* width: 112.1px; */
   background: #a2ffe8;
@@ -391,15 +410,22 @@ th {
   vertical-align: bottom;
   /* text-align: center; */
 }
+#coinType {
+  padding-right: 20px !important;
+  padding-left: 20px !important;
+}
 
 .mobile-table {
   background: #0a132a;
   font-size: 14px !important;
   padding: 21px 24px;
   width: 100%;
-  margin-bottom: 4px;
+  margin-bottom: 10px;
+  /* overflow-x: scroll; */
 }
-
+::-webkit-scrollbar {
+  display: none;
+}
 .coin_category-grid {
   width: 160px;
 }
@@ -458,11 +484,18 @@ a.nuxt-link-exact-active {
   flex-direction: row;
   justify-items: end;
 }
-@media screen and (max-width: 400px) {
-  #l-green-btn {
+
+@media screen and (max-width: 430px) {
+  #mobile-green-btn {
     font-size: 12px;
     line-height: 15px;
     /* width: 85px; */
+  }
+  .linknsearch-grid {
+    display: block !important;
+  }
+  .search-box {
+    margin-top: 16px !important;
   }
 }
 @media screen and (max-width: 768px) {
@@ -472,8 +505,8 @@ a.nuxt-link-exact-active {
   }
 
   .linknsearch-grid {
-    display: grid;
-    flex-direction: flex;
+    /* display: grid; */
+    /* flex-direction: flex; */
     grid-template-columns: 50% 50%;
     align-items: end;
     justify-items: baseline;
@@ -501,7 +534,7 @@ a.nuxt-link-exact-active {
 
 @media screen and (max-width: 540px) {
   .compare-view {
-    margin: 100px 24px;
+    margin: 100px 24px 0 24px;
   }
 
   h2 {

@@ -8,6 +8,8 @@ export const state = () => ({
       allCoins: [{
           name: 'BTC',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: true,
           borrowing: true,
@@ -17,6 +19,8 @@ export const state = () => ({
         {
           name: 'ETH',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: false,
           lending: false,
           borrowing: true,
@@ -26,6 +30,8 @@ export const state = () => ({
         {
           name: 'KCS',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: false,
           borrowing: true,
@@ -35,6 +41,8 @@ export const state = () => ({
         {
           name: 'BTC',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: true,
           borrowing: false,
@@ -44,6 +52,8 @@ export const state = () => ({
         {
           name: 'ETH',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: false,
           lending: true,
           borrowing: false,
@@ -53,6 +63,8 @@ export const state = () => ({
         {
           name: 'KCS',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: false,
           borrowing: false,
@@ -72,6 +84,8 @@ export const state = () => ({
       allCoins: [{
           name: 'BTC',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: true,
           borrowing: true,
@@ -81,6 +95,8 @@ export const state = () => ({
         {
           name: 'ETH',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: false,
           lending: false,
           borrowing: true,
@@ -90,6 +106,8 @@ export const state = () => ({
         {
           name: 'KCS',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: false,
           borrowing: true,
@@ -99,6 +117,8 @@ export const state = () => ({
         {
           name: 'BTC',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: true,
           borrowing: false,
@@ -108,6 +128,8 @@ export const state = () => ({
         {
           name: 'ETH',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: false,
           lending: true,
           borrowing: false,
@@ -117,6 +139,8 @@ export const state = () => ({
         {
           name: 'KCS',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: false,
           borrowing: false,
@@ -136,6 +160,8 @@ export const state = () => ({
       allCoins: [{
           name: 'BTC',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: true,
           borrowing: true,
@@ -145,6 +171,8 @@ export const state = () => ({
         {
           name: 'ETH',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: false,
           lending: false,
           borrowing: true,
@@ -154,6 +182,8 @@ export const state = () => ({
         {
           name: 'KCS',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: false,
           borrowing: true,
@@ -163,6 +193,8 @@ export const state = () => ({
         {
           name: 'BTC',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: true,
           borrowing: false,
@@ -172,6 +204,8 @@ export const state = () => ({
         {
           name: 'ETH',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: false,
           lending: true,
           borrowing: false,
@@ -181,6 +215,8 @@ export const state = () => ({
         {
           name: 'KCS',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: false,
           borrowing: false,
@@ -199,6 +235,8 @@ export const state = () => ({
       allCoins: [{
           name: 'BTC',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: true,
           borrowing: true,
@@ -208,6 +246,8 @@ export const state = () => ({
         {
           name: 'ETH',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: false,
           lending: false,
           borrowing: true,
@@ -217,6 +257,8 @@ export const state = () => ({
         {
           name: 'KCS',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: false,
           borrowing: true,
@@ -226,6 +268,8 @@ export const state = () => ({
         {
           name: 'BTC',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: true,
           borrowing: false,
@@ -235,6 +279,8 @@ export const state = () => ({
         {
           name: 'ETH',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: false,
           lending: true,
           borrowing: false,
@@ -244,6 +290,8 @@ export const state = () => ({
         {
           name: 'KCS',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: false,
           borrowing: false,
@@ -262,6 +310,8 @@ export const state = () => ({
       allCoins: [{
           name: 'BTC',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: true,
           borrowing: true,
@@ -271,6 +321,8 @@ export const state = () => ({
         {
           name: 'ETH',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: false,
           lending: false,
           borrowing: true,
@@ -280,6 +332,8 @@ export const state = () => ({
         {
           name: 'KCS',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: false,
           borrowing: true,
@@ -289,6 +343,8 @@ export const state = () => ({
         {
           name: 'BTC',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: true,
           borrowing: false,
@@ -298,6 +354,8 @@ export const state = () => ({
         {
           name: 'ETH',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: false,
           lending: true,
           borrowing: false,
@@ -307,6 +365,8 @@ export const state = () => ({
         {
           name: 'KCS',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: false,
           borrowing: false,
@@ -325,6 +385,8 @@ export const state = () => ({
       allCoins: [{
           name: 'BTC',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: true,
           borrowing: true,
@@ -334,6 +396,8 @@ export const state = () => ({
         {
           name: 'ETH',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: false,
           lending: false,
           borrowing: true,
@@ -343,6 +407,8 @@ export const state = () => ({
         {
           name: 'KCS',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: false,
           borrowing: true,
@@ -352,6 +418,8 @@ export const state = () => ({
         {
           name: 'BTC',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: true,
           borrowing: false,
@@ -361,6 +429,8 @@ export const state = () => ({
         {
           name: 'ETH',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: false,
           lending: true,
           borrowing: false,
@@ -370,6 +440,8 @@ export const state = () => ({
         {
           name: 'KCS',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: false,
           borrowing: false,
@@ -388,6 +460,8 @@ export const state = () => ({
       allCoins: [{
           name: 'BTC',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: true,
           borrowing: true,
@@ -397,6 +471,8 @@ export const state = () => ({
         {
           name: 'ETH',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: false,
           lending: false,
           borrowing: true,
@@ -406,6 +482,8 @@ export const state = () => ({
         {
           name: 'KCS',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: false,
           borrowing: true,
@@ -415,6 +493,8 @@ export const state = () => ({
         {
           name: 'BTC',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: true,
           borrowing: false,
@@ -424,6 +504,8 @@ export const state = () => ({
         {
           name: 'ETH',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: false,
           lending: true,
           borrowing: false,
@@ -433,6 +515,8 @@ export const state = () => ({
         {
           name: 'KCS',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: false,
           borrowing: false,
@@ -451,6 +535,8 @@ export const state = () => ({
       allCoins: [{
           name: 'BTC',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: true,
           borrowing: true,
@@ -460,6 +546,8 @@ export const state = () => ({
         {
           name: 'ETH',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: false,
           lending: false,
           borrowing: true,
@@ -469,6 +557,8 @@ export const state = () => ({
         {
           name: 'KCS',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: false,
           borrowing: true,
@@ -478,6 +568,8 @@ export const state = () => ({
         {
           name: 'BTC',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: true,
           borrowing: false,
@@ -487,6 +579,8 @@ export const state = () => ({
         {
           name: 'ETH',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: false,
           lending: true,
           borrowing: false,
@@ -496,6 +590,8 @@ export const state = () => ({
         {
           name: 'KCS',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: false,
           borrowing: false,
@@ -514,6 +610,8 @@ export const state = () => ({
       allCoins: [{
           name: 'BTC',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: true,
           borrowing: true,
@@ -523,6 +621,8 @@ export const state = () => ({
         {
           name: 'ETH',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: false,
           lending: false,
           borrowing: true,
@@ -532,6 +632,8 @@ export const state = () => ({
         {
           name: 'KCS',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: false,
           borrowing: true,
@@ -541,6 +643,8 @@ export const state = () => ({
         {
           name: 'BTC',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: true,
           borrowing: false,
@@ -550,6 +654,8 @@ export const state = () => ({
         {
           name: 'ETH',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: false,
           lending: true,
           borrowing: false,
@@ -559,6 +665,8 @@ export const state = () => ({
         {
           name: 'KCS',
           APY: '23.5%',
+          img: 'tether.svg',
+          lendApy: '23.5%',
           stableCoin: true,
           lending: false,
           borrowing: false,
