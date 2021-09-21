@@ -7,18 +7,18 @@
     >
       <div class="flex items-start">
         <div
-          class="h-14 flex items-center gap-2 mr-4"
+          class="xl:h-14 h-12 flex items-center gap-2 xl:mr-4"
           style="background: #1f2b4a"
         >
           <button
-            class="py-3 px-5 m-1"
+            class="xl:py-3 py-1 px-5 m-1"
             :class="firstConditional ? 'toggle' : ''"
             @click="toggleFirst()"
           >
             Locked values
           </button>
           <button
-            class="py-3 px-5"
+            class="xl:py-3 py-1 px-5"
             :class="secondConditional ? 'toggle' : ''"
             @click="toggleSecond()"
           >
@@ -26,7 +26,34 @@
           </button>
           <!-- <plus-icon class="m-1" /> -->
         </div>
-        <provider-dropdown-vue />
+        <div class="provider-dropdown relative xl:block hidden">
+          <div class="" @click="toggle()">
+            <div class="py-4 px-5 rounded p-dropdown">
+              <span>{{ value }}</span>
+              <img
+                src="/images/arrowdown.png"
+                style="width: 7%"
+                alt="drop down"
+              />
+            </div>
+
+            <div
+              :class="visible ? 'fade-in' : 'hidden'"
+              class="p-dropdown-content text-white p-2"
+            >
+              <ul>
+                <li
+                  v-for="(item, f) in list"
+                  :key="f"
+                  class="e-dv"
+                  @click="select(item)"
+                >
+                  {{ item }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="lg:flex hidden space-x-4 items-center gap-2">
@@ -74,12 +101,11 @@
         >
       </div>
     </div>
-
+    <div class="new-wrapper">
+      <locked-analytics-graph-vue />
+    </div>
     <div class="wrapper">
-      <div>
-        <locked-analytics-graph-vue />
-      </div>
-      <table class="lg:table hidden w-full">
+      <table class="xl:table hidden w-full">
         <tr>
           <th>Name</th>
           <th>Chain</th>
@@ -97,11 +123,11 @@
             <td>
               <div class="coin_category-grid">
                 <div
-                  v-for="(category, j) in analytics.category"
+                  v-for="(coinCategory, j) in analytics.category"
                   :key="j"
                   class="coin-category"
                 >
-                  {{ category }}
+                  {{ coinCategory }}
                 </div>
               </div>
             </td>
@@ -109,14 +135,14 @@
           </tr>
         </tbody>
       </table>
-      <div class="lg:block hidden w-full text-center">
+      <div class="xl:block hidden w-full text-center">
         <NuxtLink to="/all_analytics">
           <button class="show-btn font-semi-bold lg:p-9 p-2">Show All</button>
         </NuxtLink>
       </div>
     </div>
 
-    <div class="mt-11 lg:hidden block">
+    <div class="xl:hidden block">
       <div
         v-for="(analytics, b) in marketAnalytics"
         :key="b"
@@ -154,12 +180,9 @@
 <script>
 import lockedAnalyticsGraphVue from '../analytics.graph.vue'
 
-import ProviderDropdownVue from '../ProviderDropdown.vue'
-
 export default {
   name: 'AnalyticsTable',
   components: {
-    ProviderDropdownVue,
     lockedAnalyticsGraphVue,
   },
   data() {
@@ -168,6 +191,21 @@ export default {
       secondConditional: false,
       category: ['ALL', 'DEFI', 'NFT', 'HECO'],
       categoryValue: 'All',
+      openPDropdown: false,
+      option: [
+        'Top 10 Borrow Rates',
+        'Top 10 Provider',
+        'Compare Provider',
+        'Coin Price',
+      ],
+      value: 'Top 10 Providers',
+      list: [
+        'Top 10 Borrow Rates',
+        'Top 10 Provider',
+        'Compare Provider',
+        'Coin Price',
+      ],
+      visible: false,
     }
   },
 
@@ -195,11 +233,23 @@ export default {
     chooseCategory(option) {
       this.categoryValue = option
     },
+    toggle() {
+      this.visible = !this.visible
+    },
+    select(option) {
+      this.value = option
+    },
+    show() {
+      this.openPDropdown = !this.openPDropdown
+    },
   },
 }
 </script>
 
 <style scoped>
+.new-wrapper {
+  padding: 0 68px;
+}
 table {
   margin-top: 2px;
 }
@@ -219,6 +269,27 @@ td {
   background: #056237;
   border-radius: 4px;
   transition: 0.3s ease-in;
+}
+.p-dropdown {
+  background: #1f2b4a;
+  /* width: 188px;
+  height: 56px; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  /* position: absolute; */
+}
+.p-dropdown-content {
+  width: 250px;
+  top: 60px;
+  background: #1f2b4a;
+  position: absolute;
+}
+.e-dv {
+  background: #0a1227;
+  margin-bottom: 15px !important;
+  padding: 7px !important;
 }
 
 @media screen and (max-width: 768px) {
@@ -246,6 +317,11 @@ td {
 
   .small-text {
     font-size: 7px;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .new-wrapper {
+    padding: 0px 0px;
   }
 }
 </style>

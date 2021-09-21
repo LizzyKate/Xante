@@ -18,6 +18,7 @@ export default {
     const ctx = document.getElementById('analytics')
     ctx.style.backgroundColor = '#0A1227'
     ctx.style.borderRadius = '4px'
+    ctx.style.width = '100%'
     // eslint-disable-next-line no-new
     new Chart(ctx, this.marketData)
   },

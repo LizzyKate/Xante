@@ -1,27 +1,70 @@
 <template>
   <div class="">
-    <div class="mt-40 flex items-start wrapper">
-      <div
-        class="lg:h-14 h-10 flex lg:items-center items-start gap-2 lg:mr-4"
-        style="background: #1f2b4a"
-      >
-        <button
-          class="py-3 px-5 m-1"
-          :class="firstConditional ? 'toggle' : ''"
-          @click="toggleFirst()"
+    <div
+      class="wrapper mt-40 lg:flex block items-center justify-between wrapper"
+    >
+      <div class="flex items-start">
+        <div
+          class="xl:h-14 h-12 flex items-center gap-2 xl:mr-4"
+          style="background: #1f2b4a"
         >
-          Locked values
-        </button>
-        <button
-          class="py-3 px-5"
-          :class="secondConditional ? 'toggle' : ''"
-          @click="toggleSecond()"
-        >
-          Stable coin analysis
-        </button>
-        <!-- <plus-icon class="m-1" /> -->
+          <button
+            class="xl:py-3 py-1 px-5 m-1"
+            :class="firstConditional ? 'toggle' : ''"
+            @click="toggleFirst()"
+          >
+            Locked values
+          </button>
+          <button
+            class="xl:py-3 py-1 px-5"
+            :class="secondConditional ? 'toggle' : ''"
+            @click="toggleSecond()"
+          >
+            Stable coin analysis
+          </button>
+          <!-- <plus-icon class="m-1" /> -->
+        </div>
+        <div class="provider-dropdown relative xl:block hidden">
+          <div class="" @click="toggle()">
+            <div class="py-4 px-5 rounded p-dropdown">
+              <span>{{ value }}</span>
+              <img
+                src="/images/arrowdown.png"
+                style="width: 7%"
+                alt="drop down"
+              />
+            </div>
+
+            <div
+              :class="visible ? 'fade-in' : 'hidden'"
+              class="p-dropdown-content text-white p-2"
+            >
+              <ul>
+                <li
+                  v-for="(item, f) in list"
+                  :key="f"
+                  class="e-dv"
+                  @click="select(item)"
+                >
+                  {{ item }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- <ProviderDropdown /> -->
+
+      <div class="lg:flex hidden space-x-4 items-center gap-2">
+        <button
+          v-for="(select, j) in category"
+          :key="j"
+          class="py-4 px-6"
+          :class="[categoryValue === select ? 'active-tab' : ' ']"
+          @click="chooseCategory(select)"
+        >
+          {{ select }}
+        </button>
+      </div>
     </div>
 
     <div class="mt-5 lg:flex block items-center justify-between wrapper">
@@ -69,12 +112,11 @@
         </div>
       </div>
     </div>
-
+    <div class="new-wrapper">
+      <analytics-graph-vue />
+    </div>
     <div class="wrapper">
-      <div>
-        <analytics-graph-vue />
-      </div>
-      <table class="w-full mb-6 lg:table hidden">
+      <table class="w-full mb-6 xl:table hidden">
         <tr>
           <th>Name</th>
           <th>Chain</th>
@@ -108,11 +150,11 @@
 
     <!-- *****************MOBILe -->
 
-    <div class="my-11">
+    <div class="mb-11">
       <div
         v-for="(analytics, p) in marketAnalytics"
         :key="p"
-        class="mobile-a-table lg:hidden block"
+        class="mobile-a-table xl:hidden block"
       >
         <div class="flex items-center gap-3 mb-5">
           <img :src="analytics.img" alt="" class="w-10 h-10" />
@@ -214,6 +256,9 @@ th {
 .lsca {
   padding: 12px 20px;
 }
+.new-wrapper {
+  padding: 0px 68px;
+}
 
 @media screen and (max-width: 768px) {
   h5 {
@@ -247,6 +292,11 @@ th {
 
   .lsca {
     padding: 11px 13.5px;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .new-wrapper {
+    padding: 0px 0px;
   }
 }
 </style>

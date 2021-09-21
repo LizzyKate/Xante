@@ -80,11 +80,11 @@
       </div>
     </div> -->
 
-    <div class="wrapper">
+    <div class="new-wrapper">
       <div>
         <stable-coins-graph-vue />
       </div>
-      <table class="sc-table lg:table hidden">
+      <table class="sc-table xl:table hidden">
         <tr>
           <th>Name</th>
           <th>Chain</th>
@@ -108,7 +108,7 @@
 
     <!-- *********************MOBILE****************** -->
 
-    <div class="mt-11 lg:hidden block mb-20">
+    <div class="xl:hidden block mb-20">
       <div v-for="(coin, b) in stableCoins" :key="b" class="mobile-sc-table">
         <div class="flex items-center gap-3 mb-5">
           <img :src="`/images/${coin.img}`" alt="" class="w-10 h-10" />
@@ -205,10 +205,18 @@ td {
 .coin p:hover {
   background: #056237;
 }
+.new-wrapper {
+  padding: 0px 68px;
+}
 @media screen and (max-width: 540px) {
   .s-btn-holder,
   .sc-graph {
     padding: 0px !important;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .new-wrapper {
+    padding: 0px 0px;
   }
 }
 </style>

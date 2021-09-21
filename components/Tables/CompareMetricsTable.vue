@@ -1,8 +1,8 @@
 <template>
   <div>
     <h2 class="wrapper font-medium ma-headers">Compare coins</h2>
-    <div class="wrapper mt-12">
-      <table id="ma_table06" class="mb-24 lg:table hidden">
+    <div class="wrapper xl:mt-12 mt-6">
+      <table id="ma_table06" class="mb-24 xl:table hidden">
         <tr>
           <td rowspan="2" class="inter">
             <h5>
@@ -36,7 +36,7 @@
 
     <!-- ******************MOBILE ***************** -->
 
-    <div class="mobile-cm-table lg:hidden block mb-24">
+    <div class="mobile-cm-table text-center xl:hidden block mb-24">
       <p class="text-sm mb-7">
         Compare coins different<br />
         coins using varieties of <br />
@@ -51,11 +51,11 @@
 </template>
 
 <script>
-import DGreenBtn from "../Buttons/DGreenBtn.vue";
+import DGreenBtn from '../Buttons/DGreenBtn.vue'
 export default {
-  name: "CompareMetricsTable",
+  name: 'CompareMetricsTable',
   components: { DGreenBtn },
-};
+}
 </script>
 
 <style scoped>

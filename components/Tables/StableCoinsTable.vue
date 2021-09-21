@@ -50,12 +50,12 @@
       </div>
     </div>
 
-    <div class="wrapper">
+    <div class="new-wrapper">
       <stable-coins-graph-vue />
     </div>
 
     <div class="wrapper">
-      <table class="lg:table hidden">
+      <table class="xl:table hidden">
         <tr>
           <th>Name</th>
           <th>Chain</th>
@@ -142,6 +142,9 @@ td {
   top: 63px;
   right: 0px;
 }
+.new-wrapper {
+  padding: 0 68px;
+}
 .coin p {
   padding: 12px 16px;
 }
@@ -152,6 +155,11 @@ td {
   .s-btn-holder,
   .sc-graph {
     padding: 0px !important;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .new-wrapper {
+    padding: 0px 0px;
   }
 }
 </style>
