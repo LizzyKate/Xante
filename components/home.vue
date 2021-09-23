@@ -41,7 +41,12 @@
           traditional financial markets.
         </p>
         <div class="mt-8">
-          <button class="now w-40 w-full">Compare Now</button>
+          <button
+            class="now xl:w-44 w-full"
+            @click="$router.push({ path: 'compare' })"
+          >
+            Compare Now
+          </button>
         </div>
         <div class="absolute third xl:block hidden">
           <img src="/images/third.png" alt="" />
@@ -122,7 +127,7 @@
             space-x-3
           "
         >
-          <nuxt-link to="/market" class="link"
+          <nuxt-link to="/compare" class="link"
             >See full market anaylsis</nuxt-link
           >
           <nuxt-link to="/compare">

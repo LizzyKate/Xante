@@ -28,7 +28,7 @@ body {
 }
 
 button {
-  font-family: 'Mulish';
+  font-family: 'Mulish' !important;
 }
 
 .btn {
@@ -115,6 +115,10 @@ h5 {
 
 .mulish {
   font-family: mulish;
+}
+
+a {
+  font-family: 'Mulish';
 }
 
 .sharp-sans {

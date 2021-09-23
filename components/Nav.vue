@@ -2,7 +2,7 @@
   <div id="nav">
     <ul class="flex items-center gap-10">
       <nuxt-link to="/" class="nav-link">Home</nuxt-link>
-      <nuxt-link to="/market">Compare</nuxt-link>
+      <nuxt-link to="/compare">Compare</nuxt-link>
       <!-- <div class="dropdown">
         <button class="dropbtn nav-link" ref="comparison">
           Compare
