@@ -42,8 +42,11 @@
                 {{ name.code }}
               </option>
             </select> -->
-            <div class="relative _category">
-              <div class="flex justify-between items-center" @click="toggle()">
+            <div class="relative _category w-1/2 dropdown">
+              <div
+                class="flex justify-between items-center"
+                @click="toggle($event, 'visible')"
+              >
                 <span>{{ value }}</span>
                 <img
                   src="/images/arrowdown.png"
@@ -53,7 +56,7 @@
               </div>
 
               <div
-                :class="visible ? 'fade-in' : 'hidden'"
+                :class="isvisible['visible'] ? 'fade-in' : 'hidden'"
                 class="dropdown-content"
               >
                 <ul>
@@ -74,7 +77,7 @@
           </select> -->
         </div>
 
-        <div class="linknsearch-grid">
+        <div class="linknsearch-grid xl:w-1/2 w-full">
           <div class="cls lg:mb-6">
             <button
               :class="lending ? 'lend' : ' '"
@@ -93,8 +96,8 @@
           </div>
 
           <form
-            class="search-box md:mr-0 mr-4 relative cursor-pointer"
-            @click="showCoin()"
+            class="search-box md:mr-0 mr-4 relative cursor-pointer dropdown"
+            @click="toggle($event, 'search_dropdown')"
           >
             <div class="flex items-center w-full">
               <img
@@ -117,7 +120,7 @@
             </div>
             <img src="/images/shape.png" alt="" />
             <div
-              :class="coin ? 'fade-in' : 'hidden'"
+              :class="isvisible['search_dropdown'] ? 'fade-in' : 'hidden'"
               class="dropdown-content-two"
             >
               <ul>
@@ -135,7 +138,7 @@
         </div>
       </div>
     </div>
-    <div class="wrapper mb-16">
+    <div class="mb-16 wrapper" style="">
       <table id="compare-table" class="lg:table hidden">
         <tr class="">
           <th>Platforms</th>
@@ -190,15 +193,17 @@
             >
               {{ marketAllCoin.APY }}
             </td>
-            <td class="lg:hidden xl:block">
+            <td class="block">
               <a id="mobile-green-btn" href="#">Go to site</a>
             </td>
-            <td class="lg:block xl:hidden">
+            <!-- <td class="lg:block xl:hidden">
               <a id="mobile-green-btn" href="#">Go </a>
-            </td>
+            </td> -->
           </tr>
         </tbody>
       </table>
+
+      <!-- *****MOBILE VIEW -->
 
       <!-- *****MOBILE VIEW -->
 
@@ -207,78 +212,66 @@
         :key="j"
         class="mobile-table lg:hidden block"
       >
-        <div class="flex space-x-4 items-start mb-6">
-          <div class="w-10">
-            <img
-              :src="`/images/${mobileCoin.img}`"
-              alt=""
-              class="w-full mr-2"
-            />
-          </div>
+        <div class="flex items-start justify-between">
+          <div class="flex space-x-2 w-3/4 items-start mb-6">
+            <div class="w-10">
+              <img
+                :src="`/images/${mobileCoin.img}`"
+                alt=""
+                class="mr-2 w-full"
+              />
+            </div>
 
-          <div class="">
-            <div class="lg:mr-5 mr-3">
-              <span>{{ mobileCoin.platform }}</span>
-              <div class="lockvalue-col">
-                {{ mobileCoin.locked_value
-                }}<span class="lockvalue-percent">+14.81%</span>
-              </div>
-              <div class="coin_category-grid">
-                <span
-                  v-for="(mobileCategory, i) in mobileCoin.category"
-                  :key="i"
-                  class="coin-category"
-                >
-                  {{ mobileCategory }}
-                </span>
+            <div class="">
+              <div class="lg:mr-5 mr-3">
+                <span>{{ mobileCoin.platform }}</span>
+                <div class="lockvalue-col">
+                  {{ mobileCoin.lockedValue
+                  }}<span class="lockvalue-percent">{{
+                    mobileCoin.lockedValuePercent
+                  }}</span>
+                </div>
+                <div class="coin_category-grid __reduce">
+                  <span
+                    v-for="(mobileCategory, i) in mobileCoin.category"
+                    :key="i"
+                    class="coin-category"
+                  >
+                    {{ mobileCategory }}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="flex items-center space-x-4 my-4">
-          <div>
-            <nuxt-link to="" id="mobile-green-btn" href="#"
-              >View Details</nuxt-link
-            >
-          </div>
-          <div>
+
+          <div class="block w-1/4">
             <a id="mobile-green-btn" href="#">Go to site</a>
           </div>
         </div>
-        <!-- <div class="mobile-d-table"> -->
-        <!-- <div class="flex space-x-4 items-center">
-            <div
-              v-for="(coinType, m) in mobileCoin.allCoins"
-              id="coinType"
-              :key="m"
-            >
-              <img :src="`/images/${coinType.img}`" alt="" />
-              <span class="text-sm">{{ coinType.name }}</span>
-            </div>
-          </div>
-          <div class="flex space-x-4 items-center">
-            <p>Lend APY</p>
-            <p v-for="(apy, o) in mobileCoin.allCoins" :key="o">
-              {{ apy.lendApy }}
-            </p>
-          </div> -->
-        <!-- <tr class="">
-            <th>Lend APY</th>
 
-            <td v-for="(apy, o) in mobileCoin.allCoins" :key="o">
-              {{ apy.lendApy }}
-            </td>
-            <td>{{ coin.BCH_APY }}</td>
-            <td>{{ coin.KCS_APY }}</td>
+        <table class="mobile-d-table">
+          <tr>
+            <th></th>
+            <th v-for="(img, g) in mobileCoin.allCoins" :key="g" class="w-3">
+              <img :src="`/images/${img.img}`" alt="" class="w-6" />
+              <span class="text-sm">{{ img.name }}</span>
+            </th>
           </tr>
 
-          <tr class="mb-4">
-            <th>Borrow APY</th>
-            <td>{{ coin.ETH_APY }}</td>
-            <td>{{ coin.BCH_APY }}</td>
-            <td>{{ coin.KCS_APY }}</td>
-          </tr> -->
-        <!-- </div> -->
+          <tr class="mb-4 __mobileCompare">
+            <td class="w-2/5">Lend APY</td>
+            <td v-for="(apy, x) in mobileCoin.allCoins" :key="x">
+              {{ apy.lendApy }}
+            </td>
+          </tr>
+
+          <tr class="mb-4 __mobileCompare">
+            <td class="w-2/5">Borrow APY</td>
+            <td v-for="(apy, y) in mobileCoin.allCoins" :key="y">
+              {{ apy.borrowApy }}
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
   </section>
@@ -315,7 +308,6 @@ export default {
 
       value: 'Category',
       list: ['DEX', 'HEX', 'DEC'],
-      visible: false,
     }
   },
   computed: {
@@ -328,6 +320,9 @@ export default {
     allCoins() {
       return this.$store.state.market.coins
     },
+    isvisible() {
+      return this.$store.state.drop
+    },
   },
 
   methods: {
@@ -339,13 +334,15 @@ export default {
       this.lending = false
       this.borrowing = true
     },
-    toggle() {
-      this.visible = !this.visible
+    toggle(event, key) {
+      event.stopPropagation()
+      const t = this.$store.state.drop[key]
+      this.$store.commit('drop/visibility', { value: !t, key })
     },
     select(option) {
       this.value = option
       if (this.value === option) {
-        this.visible = !this.visible
+        this.$store.commit('drop/visibility', false)
       }
     },
     showCoin() {
@@ -359,6 +356,9 @@ export default {
 </script>
 
 <style scoped>
+.__reduce {
+  flex-wrap: wrap !important;
+}
 .dropdown-content {
   position: absolute;
   width: 100%;
@@ -429,6 +429,12 @@ th {
 .coin_category-grid {
   width: 160px;
 }
+.__mobileCompare {
+  height: 40px !important;
+}
+.__mobileCompare td {
+  padding-right: 13px !important;
+}
 .lend {
   background: #056237;
   transition: 0.3s ease-in;
@@ -454,7 +460,7 @@ th {
   background: #1f2b4a;
   border-radius: 2px;
   padding: 4px 8px;
-  min-width: 118px;
+  max-width: 118px;
   cursor: pointer;
 }
 .cls {
@@ -469,7 +475,7 @@ a.nuxt-link-exact-active {
 }
 
 .search-box {
-  width: 100%;
+  width: 80%;
   height: 52px;
   background: #0a1227;
   border-radius: 4px;
@@ -484,10 +490,14 @@ a.nuxt-link-exact-active {
   flex-direction: row;
   justify-items: end;
 }
-
+@media screen and (max-width: 350px) {
+  #mobile-green-btn {
+    padding: 7px 3px !important;
+  }
+}
 @media screen and (max-width: 430px) {
   #mobile-green-btn {
-    font-size: 12px;
+    font-size: 11px;
     line-height: 15px;
     /* width: 85px; */
   }
@@ -499,6 +509,9 @@ a.nuxt-link-exact-active {
   }
 }
 @media screen and (max-width: 768px) {
+  #mobile-green-btn {
+    padding: 7px 9px;
+  }
   td,
   th {
     font-size: 14px !important;
@@ -516,9 +529,15 @@ a.nuxt-link-exact-active {
   .compare-filters {
     width: 30%;
   }
+  .linknsearch-grid {
+    justify-items: start;
+  }
 }
 
 @media screen and (max-width: 1024px) {
+  .search-box {
+    width: 100%;
+  }
   .compare-filters {
     width: 30%;
   }

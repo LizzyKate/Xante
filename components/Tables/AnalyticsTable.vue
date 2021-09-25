@@ -26,8 +26,8 @@
           </button>
           <!-- <plus-icon class="m-1" /> -->
         </div>
-        <div class="provider-dropdown relative xl:block hidden">
-          <div class="" @click="toggle()">
+        <div class="provider-dropdown relative xl:block hidden dropdown">
+          <div class="" @click="toggle($event, 'third_dropdown')">
             <div class="py-4 px-5 rounded p-dropdown">
               <span>{{ value }}</span>
               <img
@@ -38,7 +38,7 @@
             </div>
 
             <div
-              :class="visible ? 'fade-in' : 'hidden'"
+              :class="isvisible['third_dropdown'] ? 'fade-in' : 'hidden'"
               class="p-dropdown-content text-white p-2"
             >
               <ul>
@@ -213,6 +213,9 @@ export default {
     marketAnalytics() {
       return this.$store.state.analytics.marketAnalytics.slice(0, 3)
     },
+    isvisible() {
+      return this.$store.state.drop
+    },
   },
   mounted() {
     this.categoryValue = this.category[0]
@@ -233,8 +236,10 @@ export default {
     chooseCategory(option) {
       this.categoryValue = option
     },
-    toggle() {
-      this.visible = !this.visible
+    toggle(event, key) {
+      event.stopPropagation()
+      const t = this.$store.state.drop[key]
+      this.$store.commit('drop/visibility', { value: !t, key })
     },
     select(option) {
       this.value = option

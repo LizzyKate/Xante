@@ -1,18 +1,18 @@
 <template>
-  <section class="xl:pt-12 lg:pt-32 pt-24 cover">
-    <div class="xl:flex block wrapper items-center justify-between" style="">
-      <div class="xl:w-1/2 w-full crypto">
+  <section class="xl:pt-4 lg:pt-32 pt-24 cover">
+    <div class="xl:flex block __wrap items-center" style="">
+      <div class="xl:w-1/2 crypto">
         <!-- mb-20 -->
         <h1 class="font-bold xl:text-left text-center">
           Smart & Intelligent Search across Cryptocurrency & Traditional Markets
           for the best return on your assets.
         </h1>
-        <p class="mt-6 font-thin xl:text-left text-center">
+        <p class="mt-4 font-thin xl:text-left text-center">
           XanTe focuses on finding the best yields and return across financial
           markets by connecting Lenders and Borrowers, aggregating data points
           in order to present consumers with offers in real time.
         </p>
-        <div class="xl:flex block xl:space-x-4 items-center mt-14">
+        <div class="xl:flex block xl:space-x-4 items-center mt-8">
           <div>
             <button class="central xl:w-64 py-5 w-full">Centralised</button>
           </div>
@@ -164,15 +164,15 @@ export default {}
 
 <style scoped>
 .cover {
-  background: rgba(145, 20, 255, 0.08);
+  background: #151f38;
 }
 .crypto h1 {
   font-family: 'Sharp-sans' !important;
-  line-height: 60px !important;
+  line-height: 49px !important;
 }
 .crypto p {
   width: 81%;
-  line-height: 24px !important;
+  line-height: 23px !important;
 }
 .central {
   background: #3f318c;
@@ -247,8 +247,8 @@ export default {}
   font-size: 12px;
 }
 .first {
-  bottom: -39px;
-  left: -303px;
+  bottom: -38px;
+  left: -277px;
   z-index: 50;
 }
 .second {
@@ -270,6 +270,9 @@ export default {}
   top: 255px;
   right: 0px;
   z-index: 50;
+}
+.__wrap {
+  padding-left: 64px;
 }
 @media screen and (max-width: 700px) {
   .crypto h1 {
@@ -306,8 +309,16 @@ export default {}
     font-size: 20px !important;
     line-height: 37px !important;
   }
+  .__wrap {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
 }
 @media only screen and (min-width: 701px) and (max-width: 1200px) {
+  .__wrap {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
   .wrapper {
     padding: 0 80px !important;
   }

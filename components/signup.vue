@@ -14,15 +14,15 @@
       <p class="text-black font-semibold">Sign up with Facebook</p>
     </div>
 
-    <div class="mt-12">
+    <button class="focus:outline-none mt-12" @click="$router.push('/login')">
       <span>Already have an account? </span
       ><span class="font-bold">Log in</span>
-    </div>
+    </button>
   </div>
 </template>
 
 <script>
-export default {};
+export default {}
 </script>
 
 <style scoped>

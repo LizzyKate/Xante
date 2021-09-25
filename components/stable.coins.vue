@@ -16,7 +16,7 @@
         justify-between
       "
     >
-      <div class="flex items-end space-x-2 relative">
+      <div class="flex items-end space-x-2 relative dropdown">
         <button
           v-for="(select, g) in allStableCoins"
           :key="g"
@@ -27,14 +27,13 @@
           {{ select }}
         </button>
 
-        <button class="arrow-btn" @click="showCoin()">
+        <button class="arrow-btn" @click="toggle($event, 'sixth_dropdown')">
           <img src="/images/down.png" alt="" />
         </button>
         <span class="text-xs lg:block hidden">More coins</span>
         <div
-          v-if="visible"
           class="coin flex flex-col"
-          :class="visible ? 'fade-in' : 'fade-out'"
+          :class="isvisible['sixth_dropdown'] ? 'fade-in' : 'hidden'"
         >
           <p
             v-for="(list, e) in coins"
@@ -155,6 +154,9 @@ export default {
     stableCoins() {
       return this.$store.state.stable_coins.stableCoins
     },
+    isvisible() {
+      return this.$store.state.drop
+    },
   },
   mounted() {
     this.stableCoin = this.allStableCoins[0]
@@ -170,6 +172,11 @@ export default {
       if (!this.allStableCoins.includes(value)) {
         this.allStableCoins.push(value)
       }
+    },
+    toggle(event, key) {
+      event.stopPropagation()
+      const t = this.$store.state.drop[key]
+      this.$store.commit('drop/visibility', { value: !t, key })
     },
   },
 }

@@ -2,18 +2,16 @@
   <div id="nav">
     <ul class="flex items-center gap-10">
       <nuxt-link to="/" class="nav-link">Home</nuxt-link>
-      <nuxt-link to="/compare">Compare</nuxt-link>
-      <!-- <div class="dropdown">
-        <button class="dropbtn nav-link" ref="comparison">
+      <nuxt-link to="/compare" class="nav-link">Compare</nuxt-link>
+      <!-- <div class="dropdown nav-link">
+        <nuxt-link to="/compare" class="dropbtn " ref="comparison">
           Compare
-          <i class="fa fa-caret-down"></i>
-        </button>
+       
+        </nuxt-link>
         <div class="dropdown-content">
-          <nuxt-link to="/centralised" class="compare">Centralised</nuxt-link>
+          <nuxt-link to="/compare" class="compare">Centralised</nuxt-link>
 
-          <nuxt-link to="/decentralized" class="compare"
-            >Decentralised</nuxt-link
-          >
+          <nuxt-link to="/compare" class="compare">Decentralised</nuxt-link>
         </div>
       </div> -->
       <nuxt-link to="/analytics" class="nav-link">Market Analytics</nuxt-link>
@@ -28,16 +26,16 @@
 <script>
 export default {
   name: 'Nav',
-  // mounted() {
-  //   if (this.$route.path === "/Centralised") {
-  //     this.$refs.comparison.style.borderBottom = "4px solid #39B87D";
-  //   } else if (this.$route.path === "/Decentralised") {
-  //     this.$refs.comparison.style.borderBottom = "4px solid #39B87D";
-  //   } else {
-  //     this.$refs.comparison.style.borderBottom = "none";
-  //   }
-  //   console.log(this.$route.path, "hhhh");
-  // },
+  mounted() {
+    // if (this.$route.path === '/compare') {
+    //   this.$refs.comparison.style.borderBottom = '4px solid #39B87D'
+    // } else if (this.$route.path === '/compare') {
+    //   this.$refs.comparison.style.borderBottom = '4px solid #39B87D'
+    // } else {
+    //   this.$refs.comparison.style.borderBottom = 'none'
+    // }
+    console.log(this.$route.path, 'hhhh')
+  },
 }
 </script>
 
@@ -85,7 +83,8 @@ export default {
   font-family: 'Mulish';
   font-size: 16px;
   font-weight: 300;
-  padding: 30px 0;
+  /* padding: 30px 0; */
+  border-bottom: 4px solid transparent;
 }
 
 #nav a.nuxt-link-exact-active {

@@ -1,5 +1,6 @@
 <template>
-  <section>
+  <section @click="hideT">
+    <header-vue />
     <div class="lg:mt-44 mt-11">
       <analytics-table-vue />
     </div>
@@ -45,15 +46,16 @@
 </template>
 
 <script>
-import DGreenBtnVue from "~/components/Buttons/DGreenBtn.vue";
+import DGreenBtnVue from '~/components/Buttons/DGreenBtn.vue'
+import HeaderVue from '~/components/Header.vue'
 
-import AnalyticsTableVue from "~/components/Tables/AnalyticsTable.vue";
-import CoinPriceVue from "~/components/Tables/CoinPrice.vue";
-import CoinsVue from "~/components/Tables/Coins.vue";
-import CompareMetricsTableVue from "~/components/Tables/CompareMetricsTable.vue";
-import StableCoinsTableVue from "~/components/Tables/StableCoinsTable.vue";
-import Top10Vue from "~/components/Tables/Top10.vue";
-import Top20Vue from "~/components/Tables/Top20.vue";
+import AnalyticsTableVue from '~/components/Tables/AnalyticsTable.vue'
+import CoinPriceVue from '~/components/Tables/CoinPrice.vue'
+import CoinsVue from '~/components/Tables/Coins.vue'
+import CompareMetricsTableVue from '~/components/Tables/CompareMetricsTable.vue'
+import StableCoinsTableVue from '~/components/Tables/StableCoinsTable.vue'
+import Top10Vue from '~/components/Tables/Top10.vue'
+import Top20Vue from '~/components/Tables/Top20.vue'
 
 export default {
   components: {
@@ -65,8 +67,20 @@ export default {
     CoinsVue,
     CoinPriceVue,
     DGreenBtnVue,
+    HeaderVue,
   },
-};
+  methods: {
+    hideT(event) {
+      event.cancelBubble = true
+      // close all open dropdowns
+      const t = document.querySelector('.dropdown')
+      const body = document.querySelector('body')
+      if (body.contains(t)) {
+        this.$store.commit('drop/dropAllVisibility')
+      }
+    },
+  },
+}
 </script>
 
 <style scoped>

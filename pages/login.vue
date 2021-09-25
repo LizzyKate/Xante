@@ -7,19 +7,26 @@
         alt=""
       />
     </div>
+    <div>
+      <img
+        class="img1 xl:hidden block mx-auto pt-20"
+        src="/images/app_icon.png"
+        alt=""
+      />
+    </div>
 
     <login-vue />
   </div>
 </template>
 
 <script>
-import loginVue from "~/components/login.vue";
+import loginVue from '~/components/login.vue'
 
 export default {
-  name: "Login",
+  name: 'Login',
   components: { loginVue },
-  layout: "form",
-};
+  layout: 'form',
+}
 </script>
 
 <style scoped>

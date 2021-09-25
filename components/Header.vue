@@ -1,15 +1,17 @@
 <template>
   <div class="header flex items-center justify-between relative">
-    <button class="focus:outline-none" aria-label="Open Navbar" @click="open()">
-      <img
-        class="img2 xl:hidden block"
-        src="../assets/images/Menu 2.png"
-        alt=""
-      />
+    <button
+      class="focus:outline-none xl:hidden block"
+      aria-label="Open Navbar"
+      @click="open()"
+    >
+      <img class="img2" src="../assets/images/Menu 2.png" alt="" />
     </button>
     <Logo />
     <Nav class="xl:block hidden" />
-    <button id="prybtn" class="">Create Account</button>
+    <button id="prybtn" @click="$router.push('/signup')" class="">
+      Create Account
+    </button>
     <div
       v-if="showMobileNav"
       class="absolute h-screen w-screen __mobile-nav"
@@ -21,29 +23,29 @@
         </button>
       </div>
       <ul class="flex flex-col justify-center items-center mt-24 __nav_list">
-        <li>
+        <li @click="close()">
           <nuxt-link to="/" style="color: white">Home</nuxt-link>
         </li>
-        <li class="mt-6">
+        <li class="mt-6" @click="close()">
           <nuxt-link to="/compare" style="color: white">Compare</nuxt-link>
         </li>
-        <li class="mt-6">
+        <li class="mt-6" @click="close()">
           <nuxt-link to="/analytics" style="color: white"
             >Market Analytics</nuxt-link
           >
         </li>
-        <li class="mt-6">
-          <nuxt-link to="/tools" style="color: white">Tools</nuxt-link>
+        <li class="mt-6" @click="close()">
+          <nuxt-link to="/tool" style="color: white">Tools</nuxt-link>
         </li>
-        <li class="mt-6">
+        <li class="mt-6" @click="close()">
           <nuxt-link to="/opportunity" style="color: white"
             >Opportunities</nuxt-link
           >
         </li>
-        <li class="mt-6">
+        <li class="mt-6" @click="close()">
           <nuxt-link to="/media" style="color: white">Media</nuxt-link>
         </li>
-        <li class="mt-6">
+        <li class="mt-6" @click="close()">
           <nuxt-link to="/contact" style="color: white">Contact Us</nuxt-link>
         </li>
       </ul>
@@ -56,6 +58,10 @@ import Logo from './Logo.vue'
 import Nav from './Nav.vue'
 export default {
   components: { Logo, Nav },
+  beforeRouteLeave(to, from, next) {
+    this.close()
+    next()
+  },
   computed: {
     showMobileNav() {
       return this.$store.state.nav.mobileNav
@@ -78,7 +84,7 @@ export default {
   width: 100%;
   border-radius: 0px;
   background: #0b0f1a;
-  padding: 14px 68px;
+  padding: 0 68px;
   position: fixed;
   top: 0;
   z-index: 100000000;

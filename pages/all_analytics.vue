@@ -1,5 +1,6 @@
 <template>
-  <div class="">
+  <div class="" @click="hideT">
+    <header-vue />
     <div
       class="wrapper mt-40 lg:flex block items-center justify-between wrapper"
     >
@@ -24,7 +25,7 @@
           </button>
           <!-- <plus-icon class="m-1" /> -->
         </div>
-        <div class="provider-dropdown relative xl:block hidden">
+        <!-- <div class="provider-dropdown relative xl:block hidden">
           <div class="" @click="toggle()">
             <div class="py-4 px-5 rounded p-dropdown">
               <span>{{ value }}</span>
@@ -37,6 +38,34 @@
 
             <div
               :class="visible ? 'fade-in' : 'hidden'"
+              class="p-dropdown-content text-white p-2"
+            >
+              <ul>
+                <li
+                  v-for="(item, f) in list"
+                  :key="f"
+                  class="e-dv"
+                  @click="select(item)"
+                >
+                  {{ item }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div> -->
+        <div class="provider-dropdown relative xl:block hidden dropdown">
+          <div class="" @click="toggle($event, 'fifth_dropdown')">
+            <div class="py-4 px-5 rounded p-dropdown">
+              <span>{{ value }}</span>
+              <img
+                src="/images/arrowdown.png"
+                style="width: 7%"
+                alt="drop down"
+              />
+            </div>
+
+            <div
+              :class="isvisible['fifth_dropdown'] ? 'fade-in' : 'hidden'"
               class="p-dropdown-content text-white p-2"
             >
               <ul>
@@ -183,12 +212,14 @@
 <script>
 import analyticsGraphVue from '~/components/analytics.graph.vue'
 import Color from '~/components/Color.vue'
+import HeaderVue from '~/components/Header.vue'
 
 export default {
   name: 'Analytics',
   components: {
     Color,
     analyticsGraphVue,
+    HeaderVue,
   },
   data() {
     return {
@@ -196,12 +227,22 @@ export default {
       secondConditional: false,
       category: ['ALL', 'DEFI', 'NFT', 'HECO'],
       categoryValue: 'All',
+      value: 'Top 10 Providers',
+      list: [
+        'Top 10 Borrow Rates',
+        'Top 10 Provider',
+        'Compare Provider',
+        'Coin Price',
+      ],
     }
   },
 
   computed: {
     marketAnalytics() {
       return this.$store.state.analytics.marketAnalytics
+    },
+    isvisible() {
+      return this.$store.state.drop
     },
   },
   mounted() {
@@ -222,6 +263,20 @@ export default {
     },
     chooseCategory(option) {
       this.categoryValue = option
+    },
+    hideT(event) {
+      event.cancelBubble = true
+      // close all open dropdowns
+      const t = document.querySelector('.dropdown')
+      const body = document.querySelector('body')
+      if (body.contains(t)) {
+        this.$store.commit('drop/dropAllVisibility')
+      }
+    },
+    toggle(event, key) {
+      event.stopPropagation()
+      const t = this.$store.state.drop[key]
+      this.$store.commit('drop/visibility', { value: !t, key })
     },
   },
 }
