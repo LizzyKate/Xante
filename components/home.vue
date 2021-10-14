@@ -1,13 +1,13 @@
 <template>
   <section class="xl:pt-4 lg:pt-32 pt-24 cover">
-    <div class="xl:flex block __wrap items-center" style="">
-      <div class="xl:w-1/2 crypto">
+    <div class="xl:flex block items-center" style="">
+      <div class="xl:w-1/2 crypto __wrap">
         <!-- mb-20 -->
-        <h1 class="font-bold xl:text-left text-center">
+        <h1 class="font-bold text-left">
           Smart & Intelligent Search across Cryptocurrency & Traditional Markets
           for the best return on your assets.
         </h1>
-        <p class="mt-4 font-thin xl:text-left text-center">
+        <p class="mt-4 font-thin text-left">
           XanTe focuses on finding the best yields and return across financial
           markets by connecting Lenders and Borrowers, aggregating data points
           in order to present consumers with offers in real time.
@@ -21,8 +21,9 @@
           </div>
         </div>
       </div>
-      <div class="xl:w-1/2 w-full relative xl:mt-0 mt-8">
-        <img src="/images/network.png" class="w-full" alt="" />
+      <div class="xl:w-1/2 w-full xl:relative xl:mt-0 mt-8">
+        <img src="/images/network.png" class="w-full xl:block hidden" alt="" />
+        <img src="/images/AAAG.png" class="w-full xl:hidden block" alt="" />
         <div class="absolute first xl:block hidden">
           <img src="/images/first_trans.png" alt="" />
         </div>
@@ -33,10 +34,8 @@
     </div>
     <div class="comparing xl:flex block justify-between items-center">
       <div class="lend xl:w-1/2 w-full relative">
-        <h2 class="xl:w-2/5 w-full xl:text-left text-center">
-          Compare borrowing and lending
-        </h2>
-        <p class="mt-4 font-thin xl:text-left text-center">
+        <h2 class="xl:w-2/5 w-full text-left">Compare borrowing and lending</h2>
+        <p class="mt-4 font-thin text-left">
           XanTe searches across centralised and Decentralised cryptocurrency and
           traditional financial markets.
         </p>
@@ -61,11 +60,11 @@
         <img src="/images/phone.png" class="xl:w-1/2 w-full" alt="" />
       </div>
       <div class="points xl:mt-0 mt-12 xl:w-1/2 w-full relative">
-        <h2 class="xl:text-left text-center">
+        <h2 class="text-left">
           XanTe compares and displays aggregated data points to enable users
           make smart and informed decisions.
         </h2>
-        <p class="mt-4 xl:w-1/2 w-full xl:text-left text-center font-thin">
+        <p class="mt-4 xl:w-1/2 w-full text-left font-thin">
           XanTe brings lenders and borrowers to a unified platform across
           decentralised protocols and centralised providers.
         </p>
@@ -76,8 +75,8 @@
     </div>
     <div class="smart xl:flex block justify-between items-center">
       <div class="finance xl:w-1/2 w-full relative">
-        <h2 class="xl:text-left text-center">Smart Financial Decisions</h2>
-        <p class="mt-4 font-thin xl:text-left text-center">
+        <h2 class="text-left">Smart Financial Decisions</h2>
+        <p class="mt-4 font-thin text-left">
           XanTe empowers users to make smart decisions by providing useful
           financial decisioning tools like Earnings Calculator, Reward finders,
           Wallet aggregators
@@ -95,7 +94,7 @@
         <img src="/images/users.png" class="xl:w-4/5 w-full" alt="" />
       </div>
       <div class="use xl:w-1/2 w-full relative">
-        <h2 class="font-thin xl:text-left text-center">
+        <h2 class="font-thin text-left">
           <b>XanTe</b> empowers users to make smart decisions by providing
           useful financial decisioning tools like Earnings Calculator, Reward
           finders, Wallet aggregators
@@ -108,8 +107,8 @@
     <div class="analysis wrapper">
       <div class="xl:flex block items-center justify-between">
         <div class="xl:w-1/2 w-full new">
-          <h2 class="sans xl:text-left text-center">Market Analysis</h2>
-          <p class="mt-2 xl:w-1/2 w-full xl:text-left text-center">
+          <h2 class="sans text-left">Market Analysis</h2>
+          <p class="mt-2 xl:w-1/2 w-full text-left">
             XanTe provides a market data, overview, trends and statistics
           </p>
           <!-- <div class="mt-11 flex space-x-4 "></div> -->
@@ -121,7 +120,7 @@
             xl:mt-0
             mt-8
             xl:justify-end
-            justify-center
+            justify-start
             flex
             items-center
             space-x-3
@@ -276,11 +275,11 @@ export default {}
 }
 @media screen and (max-width: 700px) {
   .crypto h1 {
-    line-height: 43px !important;
+    line-height: 36px !important;
   }
   .crypto p {
     width: 100%;
-    text-align: center;
+    /* text-align: center; */
   }
   .comparing,
   .data,
@@ -326,7 +325,7 @@ export default {}
     padding: 50px 80px !important;
   }
   .crypto h1 {
-    line-height: 43px !important;
+    line-height: 36px !important;
   }
   .crypto p {
     width: 100%;

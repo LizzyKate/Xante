@@ -14,8 +14,12 @@ body {
   font-style: normal;
   font-weight: 400;
   color: #fff;
-  background-color: #151F38;
+
   line-height: 20.08px;
+}
+
+body {
+  background-color: #151F38;
 }
 
 @font-face {
@@ -295,7 +299,7 @@ a {
   }
 
   h1 {
-    font-size: 23px !important;
+    font-size: 20px !important;
     line-height: 43px !important;
   }
 
@@ -371,4 +375,14 @@ a {
     padding: 24px 21px;
   }
 
+}
+
+@media only screen and (min-width: 2000px) {
+
+  body,
+  .header {
+    max-width: 1500px;
+    margin: auto !important;
+    background-color: #80808026 !important;
+  }
 }

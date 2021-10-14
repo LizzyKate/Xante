@@ -166,7 +166,7 @@
         <tbody>
           <tr v-for="(marketCoin, a) in allCoins" :key="a" class="">
             <td class="platform-col">
-              <img :src="`/images/${marketCoin.img}`" alt="" />
+              <img :src="`/images/${marketCoin.img}`" class="w-1/4" alt="" />
               {{ marketCoin.platform }}
             </td>
             <td>

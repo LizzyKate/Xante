@@ -1,14 +1,19 @@
 <template>
   <div class="pt-20 relative h-screen">
     <div class="text-center xl:block hidden">
-      <button class="" @click="$router.push('/')">
-        <img class="img1 mx-auto" src="/images/logo.png" alt="" />
-      </button>
+      <nuxt-link to="/" class="">
+        <img
+          class="img1 mx-auto"
+          style="width: 150px"
+          src="/images/logo.png"
+          alt=""
+        />
+      </nuxt-link>
     </div>
     <div class="text-center xl:hidden block">
-      <button @click="$router.push('/')">
+      <nuxt-link to="/">
         <img class="img1 mx-auto" src="/images/app_icon.png" alt="" />
-      </button>
+      </nuxt-link>
     </div>
     <login-vue />
     <div class="absolute xl:block hidden bottom-0 right-0">
